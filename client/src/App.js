@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import BountiesContract from "./contracts/Bounties.json";
 import getWeb3 from "./getWeb3";
+import { setJSON, getJSON } from './utils/IPFS.js'
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -11,13 +12,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
-// import BootstrapTable from 'react-bootstrap-table/lib/BootstrapTable';
-// import TableHeaderColumn from 'react-bootstrap-table/lib/TableHeaderColumn';
+import BootstrapTable from 'react-bootstrap-table/lib/BootstrapTable';
+import TableHeaderColumn from 'react-bootstrap-table/lib/TableHeaderColumn';
 
 import "./App.css";
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 const etherscanBaseUrl = "https://rinkeby.etherscan.io";
+const ipfsBaseUrl = "https://ipfs.infura.io/ipfs";
 
 class App extends Component {
 
@@ -58,7 +60,7 @@ class App extends Component {
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ bountiesInstance: instance, web3: web3, account: accounts[0] });
-      //this.addEventListener(this);
+      this.addEventListener(this);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -67,6 +69,35 @@ class App extends Component {
       console.error(error);
     }
   };
+
+  addEventListener(component) {
+    this.state.bountiesInstance.events.BountyIssued({ fromBlock: 0, toBlock: 'latest'})
+    .on('data', async function(event) {
+
+      // first get the data from IPFS and add it to the event
+      var ipfsJSON = {};
+
+      try {
+        ipfsJSON = await getJSON(event.returnValues.data);
+      }
+      catch(e) {
+      }
+
+      if (ipfsJSON.bountyData !== undefined) {
+        event.returnValues['bountyData'] = ipfsJSON.bountyData;
+        event.returnValues['ipfsData'] = ipfsBaseUrl + "/" + event.returnValues.data;
+      }
+      else {
+        event.returnValues['bountyData'] = event.returnValues['data'];
+        event.returnValues['ipfsData'] = "none";
+      }
+
+      var newBountiesArray = component.state.bounties.slice();
+      newBountiesArray.push(event.returnValues);
+      component.setState({ bounties: newBountiesArray });
+    })
+    .on('error', console.error);
+  }
 
   handleChange(event) {
     switch (event.target.name) {
@@ -87,12 +118,9 @@ class App extends Component {
   async handleIssueBounty(event) {
     if (typeof this.state.bountiesInstance !== 'undefined') {
       event.preventDefault();
-      //const ipfsHash = await setJSON({ bountyData: this.state.bountyData })
+      const ipfsHash = await setJSON({ bountyData: this.state.bountyData })
 
-      // let result = await this.state.bountiesInstance.methods.issueBounty(ipfsHash, this.state.bountyDeadline)
-      //   .send({ from: this.state.account, value: this.state.web3.utils.toWei(this.state.bountyAmount, 'ether')});
-
-      let result = await this.state.bountiesInstance.methods.issueBounty(this.state.bountyData, this.state.bountyDeadline)
+      let result = await this.state.bountiesInstance.methods.issueBounty(ipfsHash, this.state.bountyDeadline)
         .send({ from: this.state.account, value: this.state.web3.utils.toWei(this.state.bountyAmount, 'ether')});
 
       this.setLastTransactionDetails(result);
@@ -154,10 +182,9 @@ class App extends Component {
               </Form>
             </Card>
           </Row>
-          {/*
           <Row>
             <Card>
-              <Card.Heading>Issued Bounties</Card.Heading>
+              <Card.Header>Issued Bounties</Card.Header>
               <BootstrapTable data={this.state.bounties} striped hover>
                 <TableHeaderColumn isKey dataField='bounty_id'>ID</TableHeaderColumn>
                 <TableHeaderColumn dataField='issuer'>Issuer</TableHeaderColumn>
@@ -167,7 +194,6 @@ class App extends Component {
               </BootstrapTable>
             </Card>
           </Row>
-          */}
         </Container>
       </div>
     );

@@ -5,6 +5,7 @@
   "dependencies": {
     "bindings": "^1.5.0",
     "bootstrap": "^4.4.1",
+    "ipfs-mini": "^1.1.5",
     "jquery": "^3.4.1",
     "mz": "^2.7.0",
     "react": "16.11.0",
