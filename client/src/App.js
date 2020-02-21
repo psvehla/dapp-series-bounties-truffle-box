@@ -122,7 +122,7 @@ class App extends Component {
       playEventLog(component, event);
     })
 
-    var playEventLog = async function(component, event) {
+    var playEventLog = async function(component) {
 
       var keepIssuances = function(value) {
         return value['eventType'] === eventType.ISSUANCE;
