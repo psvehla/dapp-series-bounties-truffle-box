@@ -21,6 +21,13 @@ import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 const etherscanBaseUrl = "https://rinkeby.etherscan.io";
 const ipfsBaseUrl = "https://ipfs.infura.io/ipfs";
 
+const eventType = {
+  ISSUANCE: 'issuance',
+  CANCELLATION: 'cancellation'
+}
+
+Object.freeze(eventType);
+
 class App extends Component {
 
   constructor(props) {
@@ -28,17 +35,21 @@ class App extends Component {
 
     this.state = {
       bountiesInstance: undefined,
+      bountyId: '',
       bountyData: undefined,
       bountyDeadline: undefined,
       bountyAmount: undefined,
       etherscanLink: etherscanBaseUrl,
       bounties: [],
+      bountyEvents: [],
       account: null,
       web3: null,
     };
 
     this.handleIssueBounty = this.handleIssueBounty.bind(this);
+    this.handleCancelBounty = this.handleCancelBounty.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    // this.processEventLog = this.processEventLog.bind(this);
   }
 
   componentDidMount = async () => {
@@ -92,11 +103,49 @@ class App extends Component {
         event.returnValues['ipfsData'] = "none";
       }
 
-      var newBountiesArray = component.state.bounties.slice();
-      newBountiesArray.push(event.returnValues);
-      component.setState({ bounties: newBountiesArray });
+      let newBountyEventsArray = component.state.bountyEvents.slice();
+      event.returnValues['eventType'] = eventType.ISSUANCE;
+      newBountyEventsArray.push(event.returnValues);
+      component.setState({ bountyEvents: newBountyEventsArray});
+
+      playEventLog(component, event);
     })
     .on('error', console.error);
+
+    this.state.bountiesInstance.events.BountyCancelled({ fromBlock: 0, toBlock: 'latest'})
+    .on('data', async function(event) {
+      let newBountyEventsArray = component.state.bountyEvents.slice();
+      event.returnValues['eventType'] = eventType.CANCELLATION;
+      newBountyEventsArray.push(event.returnValues);
+      component.setState({ bountyEvents: newBountyEventsArray});
+
+      playEventLog(component, event);
+    })
+
+    var playEventLog = async function(component, event) {
+
+      var keepIssuances = function(value) {
+        return value['eventType'] === eventType.ISSUANCE;
+      }
+
+      var keepCancellations = function(value) {
+        return value['eventType'] === eventType.CANCELLATION;
+      }
+
+      var keepCurrentBounties = function(value) {
+        return !removals.some(e => ( e.bountyId === value.bountyId ));
+      }
+
+      var newBountiesArray = component.state.bountyEvents.slice();
+      newBountiesArray = newBountiesArray.filter(keepIssuances);
+
+      var removals = component.state.bountyEvents.slice();
+      removals = removals.filter(keepCancellations);
+
+      newBountiesArray = newBountiesArray.filter(keepCurrentBounties);
+
+      component.setState({ bounties: newBountiesArray });
+    }
   }
 
   handleChange(event) {
@@ -110,6 +159,9 @@ class App extends Component {
       case "bountyAmount":
         this.setState({"bountyAmount": event.target.value});
         break;
+      case "bountyId":
+        this.setState({"bountyId": event.target.value});
+        break;
       default:
         break;
     }
@@ -121,7 +173,18 @@ class App extends Component {
       const ipfsHash = await setJSON({ bountyData: this.state.bountyData })
 
       let result = await this.state.bountiesInstance.methods.issueBounty(ipfsHash, this.state.bountyDeadline)
-        .send({ from: this.state.account, value: this.state.web3.utils.toWei(this.state.bountyAmount, 'ether')});
+        .send({ from: this.state.account, value: this.state.web3.utils.toWei(this.state.bountyAmount, 'ether') });
+
+      this.setLastTransactionDetails(result);
+    }
+  }
+
+  async handleCancelBounty(event) {
+    if (typeof this.state.bountiesInstance !== 'undefined') {
+      event.preventDefault();
+
+      let result = await this.state.bountiesInstance.methods.cancelBounty(this.state.bountyId)
+        .send({ from: this.state.account });
 
       this.setLastTransactionDetails(result);
     }
@@ -129,7 +192,7 @@ class App extends Component {
 
   setLastTransactionDetails(result) {
     if (result.tx !== 'undefined') {
-      this.setState({ etherscanLink: etherscanBaseUrl + "/tx/ + result.tx" });
+      this.setState({ etherscanLink: etherscanBaseUrl + "/tx/" + result.tx });
     }
     else {
       this.setState({ etherscanLink: etherscanBaseUrl });
@@ -184,9 +247,27 @@ class App extends Component {
           </Row>
           <Row>
             <Card>
-              <Card.Header>Issued Bounties</Card.Header>
+              <Card.Header>Cancel Bounty</Card.Header>
+              <Form onSubmit={this.handleCancelBounty}>
+                <FormGroup controlId="formCancelBounty">
+                  <FormControl
+                    componentclass="textarea"
+                    name="bountyId"
+                    value={this.state.bountyId}
+                    placeholder="Enter bounty ID"
+                    onChange={this.handleChange}
+                  />
+                  <FormText>Enter bounty ID.</FormText>
+                  <Button type="submit">cancel bounty</Button>
+                </FormGroup>
+              </Form>
+            </Card>
+          </Row>
+          <Row>
+            <Card>
+              <Card.Header>Available Bounties</Card.Header>
               <BootstrapTable data={this.state.bounties} striped hover>
-                <TableHeaderColumn isKey dataField='bounty_id'>ID</TableHeaderColumn>
+                <TableHeaderColumn isKey dataField='bountyId'>ID</TableHeaderColumn>
                 <TableHeaderColumn dataField='issuer'>Issuer</TableHeaderColumn>
                 <TableHeaderColumn dataField='amount'>Amount</TableHeaderColumn>
                 <TableHeaderColumn dataField='ipfsData'>IPFS Data</TableHeaderColumn>

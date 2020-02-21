@@ -193,7 +193,7 @@ contract Bounties {
     /**
      * Events
      */
-    event BountyIssued(uint bounty_id, address issuer, uint amount, string data);
+    event BountyIssued(uint bountyId, address issuer, uint amount, string data);
     event BountyFulfiled(uint bountyId, address fulfiler, uint fulfilmentId, string data);
     event FulfilmentAccepted(uint bountyId, address issuer, address fulfiler, uint indexed fulfilmentId, uint amount);
     event BountyCancelled(uint indexed bountyId, address indexed sender, uint amount);

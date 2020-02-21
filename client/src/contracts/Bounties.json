@@ -69,7 +69,7 @@
         {
           "indexed": false,
           "internalType": "uint256",
-          "name": "bounty_id",
+          "name": "bountyId",
           "type": "uint256"
         },
         {
@@ -254,12 +254,12 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"bountyId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"BountyCancelled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bountyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"fulfiler\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fulfilmentId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"}],\"name\":\"BountyFulfiled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bounty_id\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"issuer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"}],\"name\":\"BountyIssued\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bountyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"issuer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"fulfiler\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"fulfilmentId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"FulfilmentAccepted\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_bountyId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_fulfilmentId\",\"type\":\"uint256\"}],\"name\":\"acceptFulfilment\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"bounties\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"issuer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"},{\"internalType\":\"enum Bounties.BountyStatus\",\"name\":\"status\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_bountyId\",\"type\":\"uint256\"}],\"name\":\"cancelBounty\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_bountyId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_data\",\"type\":\"string\"}],\"name\":\"fulfilBounty\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_data\",\"type\":\"string\"},{\"internalType\":\"uint64\",\"name\":\"_deadline\",\"type\":\"uint64\"}],\"name\":\"issueBounty\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Peter (based on tute)\",\"details\":\"Smart contract that allows a user to issue a bounty in ETH for the fulfilment of a task.\",\"methods\":{\"acceptFulfilment(uint256,uint256)\":{\"details\":\"acceptFulfilment(): accepts a submitted fulfilment and pays the BountyFulfiled\",\"params\":{\"_bountyId\":\"the bounty's id\",\"_fulfilmentId\":\"the fulfilment's id\"}},\"cancelBounty(uint256)\":{\"details\":\"cancelBounty(): cancels a bounty and returns the funds to the issuer\",\"params\":{\"_bountyId\":\"the id of the bounty to cancel\"}},\"constructor\":{\"details\":\"Constructor\"},\"fulfilBounty(uint256,string)\":{\"details\":\"fulfilBounty(): submit a fulfilment of a bounty\",\"params\":{\"_bountyId\":\"the bounty being fulfiled\",\"_data\":\"the IPFS hash containing evidence of fulfilment\"}},\"issueBounty(string,uint64)\":{\"details\":\"issueBounty(): instantiates a new bounty\",\"params\":{\"_data\":\"the requirement of the bounty\",\"_deadline\":\"the Unix timestamp after which fulfilments will no longer be accepted\"}}},\"title\":\"Bounties\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/D/projects/JB/dapp-series-bounties-truffle-box/contracts/Bounties.sol\":\"Bounties\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/projects/JB/dapp-series-bounties-truffle-box/contracts/Bounties.sol\":{\"keccak256\":\"0x9a1371bdbd2f5e242ae45d2d8863caba60710f1348d3bcba6c71a23b676eae66\",\"urls\":[\"bzz-raw://576f93bb7b831d2cca26b102b33702ec1a354c2faaf18c932eb297ad130f0b41\",\"dweb:/ipfs/QmVe7FacxhWXdk5CmJs1xARekNRYushTnerF68rqovzTCw\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5061127b806100206000396000f3fe60806040526004361061004a5760003560e01c80639d8c57341461004f578063a3603d2b14610121578063a372625314610166578063dc2f874414610249578063e5e5dff114610353575b600080fd5b34801561005b57600080fd5b5061011f6004803603604081101561007257600080fd5b81019080803590602001909291908035906020019064010000000081111561009957600080fd5b8201836020820111156100ab57600080fd5b803590602001918460018302840111640100000000831117156100cd57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061038e565b005b34801561012d57600080fd5b506101646004803603604081101561014457600080fd5b810190808035906020019092919080359060200190929190505050610730565b005b6102336004803603604081101561017c57600080fd5b810190808035906020019064010000000081111561019957600080fd5b8201836020820111156101ab57600080fd5b803590602001918460018302840111640100000000831117156101cd57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290803567ffffffffffffffff169060200190929190505050610b2f565b6040518082815260200191505060405180910390f35b34801561025557600080fd5b506102826004803603602081101561026c57600080fd5b8101908080359060200190929190505050610d72565b604051808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001858152602001806020018460028111156102ce57fe5b60ff168152602001838152602001828103825285818151815260200191508051906020019080838360005b838110156103145780820151818401526020810190506102f9565b50505050905090810190601f1680156103415780820380516001836020036101000a031916815260200191505b50965050505050505060405180910390f35b34801561035f57600080fd5b5061038c6004803603602081101561037657600080fd5b8101908080359060200190929190505050610e7a565b005b8160008054905081106103a057600080fd5b826103b26103ad336110c3565b611118565b6040518082815260200191505060405180910390a0610416610411600083815481106103da57fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166110c3565b611118565b6040518082815260200191505060405180910390a06000818154811061043857fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156104a257600080fd5b8360008160001b6040518082815260200191505060405180910390a0600082815481106104cb57fe5b906000526020600020906005020160030160009054906101000a900460ff1660028111156104f557fe5b81600281111561050157fe5b1461050b57600080fd5b856000818154811061051957fe5b906000526020600020906005020160010154421061053657600080fd5b6001600088815260200190815260200160002060405180606001604052806000151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001888152509080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550604082015181600101908051906020019061062b9291906111a1565b505050507fe467edb885a289a5b3108ca26d435f3ba24f14d8eb6c0732297d79b195c63b0c873360018060008c8152602001908152602001600020805490500389604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b838110156106ea5780820151818401526020810190506106cf565b50505050905090810190601f1680156107175780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a150505050505050565b81600080549050811061074257600080fd5b82826001600083815260200190815260200160002080549050811061076657600080fd5b846000818154811061077457fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146107dd57600080fd5b8560008160001b6040518082815260200191505060405180910390a06000828154811061080657fe5b906000526020600020906005020160030160009054906101000a900460ff16600281111561083057fe5b81600281111561083c57fe5b1461084657600080fd5b87876000151560016000848152602001908152602001600020828154811061086a57fe5b906000526020600020906002020160000160009054906101000a900460ff1615151461089557600080fd5b60018060008c81526020019081526020016000208a815481106108b457fe5b906000526020600020906002020160000160006101000a81548160ff021916908315150217905550600160008b815481106108eb57fe5b906000526020600020906005020160030160006101000a81548160ff0219169083600281111561091757fe5b0217905550600160008b8152602001908152602001600020898154811061093a57fe5b906000526020600020906002020160000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc60008c8154811061099257fe5b9060005260206000209060050201600401549081150290604051600060405180830381858888f193505050501580156109cf573d6000803e3d6000fd5b50887fdf3a7564d87eb6d6112e0cf417a2c2c3f54782224c6f31e863f9069a7db7250a8b60008d81548110610a0057fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160008f81526020019081526020016000208d81548110610a5057fe5b906000526020600020906002020160000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1660008f81548110610a8f57fe5b906000526020600020906005020160040154604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200194505050505060405180910390a250505050505050505050565b6000803411610b3d57600080fd5b8167ffffffffffffffff16428111610b5457600080fd5b60006040518060a001604052803373ffffffffffffffffffffffffffffffffffffffff1681526020018567ffffffffffffffff16815260200186815260200160006002811115610ba057fe5b8152602001348152509080600181540180825580915050906001820390600052602060002090600502016000909192909190915060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550602082015181600101556040820151816002019080519060200190610c419291906111a1565b5060608201518160030160006101000a81548160ff02191690836002811115610c6657fe5b0217905550608082015181600401555050507fba1576d8891bfe57a45ac4b986d4a4aa912c62f44771d4eec8ab2ce06e3be5b7600160008054905003333487604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b83811015610d23578082015181840152602081019050610d08565b50505050905090810190601f168015610d505780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a160016000805490500391505092915050565b60008181548110610d7f57fe5b90600052602060002090600502016000915090508060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690806001015490806002018054600181600116156101000203166002900480601f016020809104026020016040519081016040528092919081815260200182805460018160011615610100020316600290048015610e575780601f10610e2c57610100808354040283529160200191610e57565b820191906000526020600020905b815481529060010190602001808311610e3a57829003601f168201915b5050505050908060030160009054906101000a900460ff16908060040154905085565b806000805490508110610e8c57600080fd5b8160008181548110610e9a57fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610f0357600080fd5b8260008160001b6040518082815260200191505060405180910390a060008281548110610f2c57fe5b906000526020600020906005020160030160009054906101000a900460ff166002811115610f5657fe5b816002811115610f6257fe5b14610f6c57600080fd5b600260008681548110610f7b57fe5b906000526020600020906005020160030160006101000a81548160ff02191690836002811115610fa757fe5b021790555060008581548110610fb957fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc6000878154811061101157fe5b9060005260206000209060050201600401549081150290604051600060405180830381858888f1935050505015801561104e573d6000803e3d6000fd5b503373ffffffffffffffffffffffffffffffffffffffff16857fb9670bf4f2273686f771c9ab65309436df5ed75afa63eefec8b67640d8bcf72c6000888154811061109557fe5b9060005260206000209060050201600401546040518082815260200191505060405180910390a35050505050565b606081604051602001808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019150506040516020818303038152906040529050919050565b600061112582600061112c565b9050919050565b60008060008090505b6020811015611196576008810260ff60f81b868387018151811061115557fe5b602001015160f81c60f81b167effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916901c821791508080600101915050611135565b508091505092915050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106111e257805160ff1916838001178555611210565b82800160010185558215611210579182015b8281111561120f5782518255916020019190600101906111f4565b5b50905061121d9190611221565b5090565b61124391905b8082111561123f576000816000905550600101611227565b5090565b9056fea265627a7a72315820f9ae90f42f6037a125788312542939791eb73d087bb55173b965c1256ca3c1ed64736f6c63430005100032",
-  "deployedBytecode": "0x60806040526004361061004a5760003560e01c80639d8c57341461004f578063a3603d2b14610121578063a372625314610166578063dc2f874414610249578063e5e5dff114610353575b600080fd5b34801561005b57600080fd5b5061011f6004803603604081101561007257600080fd5b81019080803590602001909291908035906020019064010000000081111561009957600080fd5b8201836020820111156100ab57600080fd5b803590602001918460018302840111640100000000831117156100cd57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061038e565b005b34801561012d57600080fd5b506101646004803603604081101561014457600080fd5b810190808035906020019092919080359060200190929190505050610730565b005b6102336004803603604081101561017c57600080fd5b810190808035906020019064010000000081111561019957600080fd5b8201836020820111156101ab57600080fd5b803590602001918460018302840111640100000000831117156101cd57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290803567ffffffffffffffff169060200190929190505050610b2f565b6040518082815260200191505060405180910390f35b34801561025557600080fd5b506102826004803603602081101561026c57600080fd5b8101908080359060200190929190505050610d72565b604051808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001858152602001806020018460028111156102ce57fe5b60ff168152602001838152602001828103825285818151815260200191508051906020019080838360005b838110156103145780820151818401526020810190506102f9565b50505050905090810190601f1680156103415780820380516001836020036101000a031916815260200191505b50965050505050505060405180910390f35b34801561035f57600080fd5b5061038c6004803603602081101561037657600080fd5b8101908080359060200190929190505050610e7a565b005b8160008054905081106103a057600080fd5b826103b26103ad336110c3565b611118565b6040518082815260200191505060405180910390a0610416610411600083815481106103da57fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166110c3565b611118565b6040518082815260200191505060405180910390a06000818154811061043857fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156104a257600080fd5b8360008160001b6040518082815260200191505060405180910390a0600082815481106104cb57fe5b906000526020600020906005020160030160009054906101000a900460ff1660028111156104f557fe5b81600281111561050157fe5b1461050b57600080fd5b856000818154811061051957fe5b906000526020600020906005020160010154421061053657600080fd5b6001600088815260200190815260200160002060405180606001604052806000151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001888152509080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550604082015181600101908051906020019061062b9291906111a1565b505050507fe467edb885a289a5b3108ca26d435f3ba24f14d8eb6c0732297d79b195c63b0c873360018060008c8152602001908152602001600020805490500389604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b838110156106ea5780820151818401526020810190506106cf565b50505050905090810190601f1680156107175780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a150505050505050565b81600080549050811061074257600080fd5b82826001600083815260200190815260200160002080549050811061076657600080fd5b846000818154811061077457fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146107dd57600080fd5b8560008160001b6040518082815260200191505060405180910390a06000828154811061080657fe5b906000526020600020906005020160030160009054906101000a900460ff16600281111561083057fe5b81600281111561083c57fe5b1461084657600080fd5b87876000151560016000848152602001908152602001600020828154811061086a57fe5b906000526020600020906002020160000160009054906101000a900460ff1615151461089557600080fd5b60018060008c81526020019081526020016000208a815481106108b457fe5b906000526020600020906002020160000160006101000a81548160ff021916908315150217905550600160008b815481106108eb57fe5b906000526020600020906005020160030160006101000a81548160ff0219169083600281111561091757fe5b0217905550600160008b8152602001908152602001600020898154811061093a57fe5b906000526020600020906002020160000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc60008c8154811061099257fe5b9060005260206000209060050201600401549081150290604051600060405180830381858888f193505050501580156109cf573d6000803e3d6000fd5b50887fdf3a7564d87eb6d6112e0cf417a2c2c3f54782224c6f31e863f9069a7db7250a8b60008d81548110610a0057fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160008f81526020019081526020016000208d81548110610a5057fe5b906000526020600020906002020160000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1660008f81548110610a8f57fe5b906000526020600020906005020160040154604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200194505050505060405180910390a250505050505050505050565b6000803411610b3d57600080fd5b8167ffffffffffffffff16428111610b5457600080fd5b60006040518060a001604052803373ffffffffffffffffffffffffffffffffffffffff1681526020018567ffffffffffffffff16815260200186815260200160006002811115610ba057fe5b8152602001348152509080600181540180825580915050906001820390600052602060002090600502016000909192909190915060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550602082015181600101556040820151816002019080519060200190610c419291906111a1565b5060608201518160030160006101000a81548160ff02191690836002811115610c6657fe5b0217905550608082015181600401555050507fba1576d8891bfe57a45ac4b986d4a4aa912c62f44771d4eec8ab2ce06e3be5b7600160008054905003333487604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b83811015610d23578082015181840152602081019050610d08565b50505050905090810190601f168015610d505780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a160016000805490500391505092915050565b60008181548110610d7f57fe5b90600052602060002090600502016000915090508060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690806001015490806002018054600181600116156101000203166002900480601f016020809104026020016040519081016040528092919081815260200182805460018160011615610100020316600290048015610e575780601f10610e2c57610100808354040283529160200191610e57565b820191906000526020600020905b815481529060010190602001808311610e3a57829003601f168201915b5050505050908060030160009054906101000a900460ff16908060040154905085565b806000805490508110610e8c57600080fd5b8160008181548110610e9a57fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610f0357600080fd5b8260008160001b6040518082815260200191505060405180910390a060008281548110610f2c57fe5b906000526020600020906005020160030160009054906101000a900460ff166002811115610f5657fe5b816002811115610f6257fe5b14610f6c57600080fd5b600260008681548110610f7b57fe5b906000526020600020906005020160030160006101000a81548160ff02191690836002811115610fa757fe5b021790555060008581548110610fb957fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc6000878154811061101157fe5b9060005260206000209060050201600401549081150290604051600060405180830381858888f1935050505015801561104e573d6000803e3d6000fd5b503373ffffffffffffffffffffffffffffffffffffffff16857fb9670bf4f2273686f771c9ab65309436df5ed75afa63eefec8b67640d8bcf72c6000888154811061109557fe5b9060005260206000209060050201600401546040518082815260200191505060405180910390a35050505050565b606081604051602001808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019150506040516020818303038152906040529050919050565b600061112582600061112c565b9050919050565b60008060008090505b6020811015611196576008810260ff60f81b868387018151811061115557fe5b602001015160f81c60f81b167effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916901c821791508080600101915050611135565b508091505092915050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106111e257805160ff1916838001178555611210565b82800160010185558215611210579182015b8281111561120f5782518255916020019190600101906111f4565b5b50905061121d9190611221565b5090565b61124391905b8082111561123f576000816000905550600101611227565b5090565b9056fea265627a7a72315820f9ae90f42f6037a125788312542939791eb73d087bb55173b965c1256ca3c1ed64736f6c63430005100032",
-  "sourceMap": "192:6038:0:-;;;774:23;8:9:-1;5:2;;;30:1;27;20:12;5:2;774:23:0;192:6038;;;;;;",
-  "deployedSourceMap": "192:6038:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1617:398;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1617:398:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1617:398:0;;;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1617:398:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1617:398:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1617:398:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1617:398:0;;;;;;;;;;;;;;;:::i;:::-;;2223:680;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2223:680:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2223:680:0;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1023:387;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1023:387:0;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1023:387:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1023:387:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1023:387:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1023:387:0;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;341:24;;8:9:-1;5:2;;;30:1;27;20:12;5:2;341:24:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;341:24:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;341:24:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3067:388;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3067:388:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;3067:388:0;;;;;;;;;;;;;;;;;:::i;:::-;;1617:398;1728:9;4761:8;:15;;;;4749:9;:27;4741:36;;;;;;1749:9;4856:35;4871:19;4879:10;4871:7;:19::i;:::-;4856:14;:35::i;:::-;4851:41;;;;;;;;;;;;;;;;;;4908:51;4923:35;4931:8;4940:9;4931:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;4923:7;:35::i;:::-;4908:14;:51::i;:::-;4903:57;;;;;;;;;;;;;;;;;;4993:8;5002:9;4993:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;4979:40;;:10;:40;;;;4971:49;;;;;;1770:9;1781:20;5137:9;5129:18;;5124:24;;;;;;;;;;;;;;;;;;5186:8;5195:9;5186:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5167:45;;;;;;;;:15;:45;;;;;;;;;5159:54;;;;;;1820:9;5308:8;5317:9;5308:19;;;;;;;;;;;;;;;;;;:28;;;5302:3;:34;5294:43;;;;;;1847:11;:22;1859:9;1847:22;;;;;;;;;;;1875:36;;;;;;;;1886:5;1875:36;;;;;;1893:10;1875:36;;;;;;1905:5;1875:36;;;1847:65;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1847:65:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;1928:79;1943:9;1954:10;1998:1;1966:11;:22;1978:9;1966:22;;;;;;;;;;;:29;;;;:33;2001:5;1928:79;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1928:79:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5224:1;5031;;4788;1617:398;;;:::o;2223:680::-;2337:9;4761:8;:15;;;;4749:9;:27;4741:36;;;;;;2365:9;2376:13;5462:11;:22;5474:9;5462:22;;;;;;;;;;;:29;;;;5446:13;:45;5438:54;;;;;;2402:9;5589:8;5598:9;5589:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5575:40;;:10;:40;;;5567:49;;;;;;2423:9;2434:20;5137:9;5129:18;;5124:24;;;;;;;;;;;;;;;;;;5186:8;5195:9;5186:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5167:45;;;;;;;;:15;:45;;;;;;;;;5159:54;;;;;;2481:9;2492:13;5783:5;5733:55;;:11;:22;5745:9;5733:22;;;;;;;;;;;5756:13;5733:37;;;;;;;;;;;;;;;;;;:46;;;;;;;;;;;;:55;;;5725:64;;;;;;2572:4;2523:11;:22;2535:9;2523:22;;;;;;;;;;;2546:13;2523:37;;;;;;;;;;;;;;;;;;:46;;;:53;;;;;;;;;;;;;;;;;;2616:21;2587:8;2596:9;2587:19;;;;;;;;;;;;;;;;;;:26;;;:50;;;;;;;;;;;;;;;;;;;;;;;;2648:11;:22;2660:9;2648:22;;;;;;;;;;;2671:13;2648:37;;;;;;;;;;;;;;;;;;:46;;;;;;;;;;;;:55;;:83;2704:8;2713:9;2704:19;;;;;;;;;;;;;;;;;;:26;;;2648:83;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2648:83:0;2853:13;2747:148;2766:9;2777:8;2786:9;2777:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;2805:11;:22;2817:9;2805:22;;;;;;;;;;;2828:13;2805:37;;;;;;;;;;;;;;;;;;:46;;;;;;;;;;;;2868:8;2877:9;2868:19;;;;;;;;;;;;;;;;;;:26;;;2747:148;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5224:1;;5627;;5503;4788;;2223:680;;;:::o;1023:387::-;1178:4;4662:1;4650:9;:13;4642:22;;;;;;1158:9;4500:103;;4579:3;4564:12;:18;4556:27;;;;;;1200:8;1214:69;;;;;;;;1221:10;1214:69;;;;;;1233:9;1214:69;;;;;;1244:5;1214:69;;;;1251:20;1214:69;;;;;;;;;;;;1273:9;1214:69;;;1200:84;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1200:84:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1300:63;1331:1;1313:8;:15;;;;:19;1334:10;1346:9;1357:5;1300:63;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1300:63:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1400:1;1382:8;:15;;;;:19;1374:28;;4675:1;1023:387;;;;:::o;341:24::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;3067:388::-;3148:9;4761:8;:15;;;;4749:9;:27;4741:36;;;;;;3170:9;5589:8;5598:9;5589:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5575:40;;:10;:40;;;5567:49;;;;;;3191:9;3202:20;5137:9;5129:18;;5124:24;;;;;;;;;;;;;;;;;;5186:8;5195:9;5186:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5167:45;;;;;;;;:15;:45;;;;;;;;;5159:54;;;;;;3269:22;3240:8;3249:9;3240:19;;;;;;;;;;;;;;;;;;:26;;;:51;;;;;;;;;;;;;;;;;;;;;;;;3302:8;3311:9;3302:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;:35;;:63;3338:8;3347:9;3338:19;;;;;;;;;;;;;;;;;;:26;;;3302:63;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;3302:63:0;3408:10;3381:66;;3397:9;3381:66;3420:8;3429:9;3420:19;;;;;;;;;;;;;;;;;;:26;;;3381:66;;;;;;;;;;;;;;;;;;5627:1;;4788;3067:388;;:::o;3625:103::-;3675:12;3718:1;3707:13;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;3707:13:0;;;3700:20;;3625:103;;;:::o;4339:117::-;4401:7;4428:20;4443:1;4446;4428:14;:20::i;:::-;4421:27;;4339:117;;;:::o;3954:251::-;4029:7;4049:11;4078:6;4087:1;4078:10;;4073:104;4094:2;4090:1;:6;4073:104;;;4163:1;4159;:5;4149:4;4133:20;;:1;4144;4135:6;:10;4133:13;;;;;;;;;;;;;;;;:20;4125:29;;;:40;;4118:47;;;;4098:3;;;;;;;4073:104;;;;4194:3;4187:10;;;3954:251;;;;:::o;192:6038::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.5.16;\r\n\r\n/**\r\n * @title Bounties\r\n * @author Peter (based on tute)\r\n * @dev Smart contract that allows a user to issue a bounty in ETH for the fulfilment of a task.\r\n */\r\n\r\ncontract Bounties {\r\n\r\n    /*\r\n     * Enums\r\n     */\r\n    enum BountyStatus { CREATED, ACCEPTED, CANCELLED }\r\n\r\n    /*\r\n     * Storage\r\n     */\r\n    Bounty[] public bounties;\r\n\r\n    mapping(uint=>Fulfilment[]) fulfilments;\r\n\r\n    /*\r\n     * Structs\r\n     */\r\n    struct Bounty {\r\n        address payable issuer;\r\n        uint deadline;\r\n        string data;\r\n        BountyStatus status;\r\n        uint amount;\r\n    }\r\n\r\n    struct Fulfilment {\r\n        bool accepted;\r\n        address payable fulfiler;\r\n        string data;\r\n    }\r\n\r\n    /**\r\n     * @dev Constructor\r\n     */\r\n    constructor() public {}\r\n\r\n    /**\r\n     * @dev issueBounty(): instantiates a new bounty\r\n     * @param _data the requirement of the bounty\r\n     * @param _deadline the Unix timestamp after which fulfilments will no longer be accepted\r\n     */\r\n    function issueBounty(\r\n        string memory _data,\r\n        uint64 _deadline\r\n    )\r\n\r\n    public payable hasValue() validateDeadline(_deadline) returns (uint)\r\n    {\r\n        bounties.push(Bounty(msg.sender, _deadline, _data, BountyStatus.CREATED, msg.value));\r\n        emit BountyIssued(bounties.length - 1, msg.sender, msg.value, _data);\r\n        return (bounties.length - 1);\r\n    }\r\n\r\n    /**\r\n     * @dev fulfilBounty(): submit a fulfilment of a bounty\r\n     * @param _bountyId the bounty being fulfiled\r\n     * @param _data the IPFS hash containing evidence of fulfilment\r\n     */\r\n    function fulfilBounty(\r\n        uint _bountyId,\r\n        string memory _data\r\n    )\r\n\r\n    public bountyExists(_bountyId) notIssuer(_bountyId) hasStatus(_bountyId, BountyStatus.CREATED) isBeforeDeadline(_bountyId)\r\n    {\r\n        fulfilments[_bountyId].push(Fulfilment(false, msg.sender, _data));\r\n        emit BountyFulfiled(_bountyId, msg.sender, fulfilments[_bountyId].length - 1, _data);\r\n    }\r\n\r\n    /**\r\n     * @dev acceptFulfilment(): accepts a submitted fulfilment and pays the BountyFulfiled\r\n     * @param _bountyId the bounty's id\r\n     * @param _fulfilmentId the fulfilment's id\r\n     */\r\n    function acceptFulfilment(\r\n        uint _bountyId,\r\n        uint _fulfilmentId\r\n    )\r\n\r\n    public bountyExists(_bountyId) fulfilmentExists(_bountyId, _fulfilmentId) onlyIssuer(_bountyId) hasStatus(_bountyId, BountyStatus.CREATED) fulfilmentNotYetAccepted(_bountyId, _fulfilmentId)\r\n    {\r\n        fulfilments[_bountyId][_fulfilmentId].accepted = true;\r\n        bounties[_bountyId].status = BountyStatus.ACCEPTED;\r\n        fulfilments[_bountyId][_fulfilmentId].fulfiler.transfer(bounties[_bountyId].amount);\r\n        emit FulfilmentAccepted(_bountyId, bounties[_bountyId].issuer, fulfilments[_bountyId][_fulfilmentId].fulfiler, _fulfilmentId, bounties[_bountyId].amount);\r\n    }\r\n\r\n    /**\r\n     * @dev cancelBounty(): cancels a bounty and returns the funds to the issuer\r\n     * @param _bountyId the id of the bounty to cancel\r\n     */\r\n    function cancelBounty(\r\n        uint _bountyId\r\n    )\r\n\r\n    public bountyExists(_bountyId) onlyIssuer(_bountyId) hasStatus(_bountyId, BountyStatus.CREATED)\r\n    {\r\n        bounties[_bountyId].status = BountyStatus.CANCELLED;\r\n        bounties[_bountyId].issuer.transfer(bounties[_bountyId].amount);\r\n        emit BountyCancelled(_bountyId, msg.sender, bounties[_bountyId].amount);\r\n    }\r\n\r\n    /**\r\n     * @dev toBytes(): Converts an address to bytes for logging.\r\n     * @param a the address to Converts\r\n     * @return the address in bytes\r\n     */\r\n    function toBytes(address a) private pure returns (bytes memory) {\r\n        return abi.encode(a);\r\n    }\r\n\r\n    /**\r\n     * @dev bytesToBytes32(): Converts bytes to bytes32 for logging.\r\n     * @param b the bytes to convert\r\n     * @param offset Offset to start the conversion at. 0 if you require the whole number.\r\n     */\r\n    function bytesToBytes32(bytes memory b, uint offset) private pure returns (bytes32) {\r\n        bytes32 out;\r\n\r\n        for (uint i = 0; i < 32; i++) {\r\n            out |= bytes32(b[offset + i] & 0xFF) >> (i * 8);\r\n        }\r\n        return out;\r\n    }\r\n\r\n    /**\r\n     * @dev bytesToBytes32(): Converts bytes to bytes32 for logging.\r\n     * @param b the bytes to convert\r\n     */\r\n    function bytesToBytes32(bytes memory b) private pure returns (bytes32) {\r\n        return bytesToBytes32(b, 0);\r\n    }\r\n\r\n    /**\r\n     * Modifiers\r\n     */\r\n    modifier validateDeadline(uint _newDeadline) {\r\n        require(_newDeadline > now);\r\n        _;\r\n    }\r\n\r\n    modifier hasValue() {\r\n        require(msg.value > 0);\r\n        _;\r\n    }\r\n\r\n    modifier bountyExists(uint _bountyId) {\r\n        require(_bountyId < bounties.length);\r\n        _;\r\n    }\r\n\r\n    modifier notIssuer(uint _bountyId) {\r\n        log0(bytesToBytes32(toBytes(msg.sender)));\r\n        log0(bytesToBytes32(toBytes(bounties[_bountyId].issuer)));\r\n        require(msg.sender != bounties[_bountyId].issuer);\r\n        _;\r\n    }\r\n\r\n    modifier hasStatus(uint _bountyId, BountyStatus _requiredStatus) {\r\n        log0(bytes32(_bountyId));\r\n        require(_requiredStatus == bounties[_bountyId].status);\r\n        _;\r\n    }\r\n\r\n    modifier isBeforeDeadline(uint _bountyId) {\r\n        require(now < bounties[_bountyId].deadline);\r\n        _;\r\n    }\r\n\r\n    modifier fulfilmentExists(uint _bountyId, uint _fulfilmentId) {\r\n        require(_fulfilmentId < fulfilments[_bountyId].length);\r\n        _;\r\n    }\r\n\r\n    modifier onlyIssuer(uint _bountyId) {\r\n        require(msg.sender == bounties[_bountyId].issuer);\r\n        _;\r\n    }\r\n\r\n    modifier fulfilmentNotYetAccepted(uint _bountyId, uint _fulfilmentId) {\r\n        require(fulfilments[_bountyId][_fulfilmentId].accepted == false);\r\n        _;\r\n    }\r\n\r\n    /**\r\n     * Events\r\n     */\r\n    event BountyIssued(uint bounty_id, address issuer, uint amount, string data);\r\n    event BountyFulfiled(uint bountyId, address fulfiler, uint fulfilmentId, string data);\r\n    event FulfilmentAccepted(uint bountyId, address issuer, address fulfiler, uint indexed fulfilmentId, uint amount);\r\n    event BountyCancelled(uint indexed bountyId, address indexed sender, uint amount);\r\n}\r\n",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"bountyId\",\"type\":\"uint256\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"BountyCancelled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bountyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"fulfiler\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"fulfilmentId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"}],\"name\":\"BountyFulfiled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bountyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"issuer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"}],\"name\":\"BountyIssued\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"bountyId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"issuer\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"fulfiler\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"fulfilmentId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"FulfilmentAccepted\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_bountyId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_fulfilmentId\",\"type\":\"uint256\"}],\"name\":\"acceptFulfilment\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"bounties\",\"outputs\":[{\"internalType\":\"address payable\",\"name\":\"issuer\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"deadline\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"data\",\"type\":\"string\"},{\"internalType\":\"enum Bounties.BountyStatus\",\"name\":\"status\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_bountyId\",\"type\":\"uint256\"}],\"name\":\"cancelBounty\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_bountyId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_data\",\"type\":\"string\"}],\"name\":\"fulfilBounty\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_data\",\"type\":\"string\"},{\"internalType\":\"uint64\",\"name\":\"_deadline\",\"type\":\"uint64\"}],\"name\":\"issueBounty\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Peter (based on tute)\",\"details\":\"Smart contract that allows a user to issue a bounty in ETH for the fulfilment of a task.\",\"methods\":{\"acceptFulfilment(uint256,uint256)\":{\"details\":\"acceptFulfilment(): accepts a submitted fulfilment and pays the BountyFulfiled\",\"params\":{\"_bountyId\":\"the bounty's id\",\"_fulfilmentId\":\"the fulfilment's id\"}},\"cancelBounty(uint256)\":{\"details\":\"cancelBounty(): cancels a bounty and returns the funds to the issuer\",\"params\":{\"_bountyId\":\"the id of the bounty to cancel\"}},\"constructor\":{\"details\":\"Constructor\"},\"fulfilBounty(uint256,string)\":{\"details\":\"fulfilBounty(): submit a fulfilment of a bounty\",\"params\":{\"_bountyId\":\"the bounty being fulfiled\",\"_data\":\"the IPFS hash containing evidence of fulfilment\"}},\"issueBounty(string,uint64)\":{\"details\":\"issueBounty(): instantiates a new bounty\",\"params\":{\"_data\":\"the requirement of the bounty\",\"_deadline\":\"the Unix timestamp after which fulfilments will no longer be accepted\"}}},\"title\":\"Bounties\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/D/projects/JB/dapp-series-bounties-truffle-box/contracts/Bounties.sol\":\"Bounties\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/projects/JB/dapp-series-bounties-truffle-box/contracts/Bounties.sol\":{\"keccak256\":\"0x201bb9433615680fb34e6e8f340dfaa3ba185d914b4a6bc48df3e4975587fd52\",\"urls\":[\"bzz-raw://457dee16bc705c81139f81932a8bd272d6d3438585d0b91bb9797c51dbe61caa\",\"dweb:/ipfs/QmZcTTEWbjPiGXMG22xWNxZ1XhLMfKoGkm9vXJMfzseNfg\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061127b806100206000396000f3fe60806040526004361061004a5760003560e01c80639d8c57341461004f578063a3603d2b14610121578063a372625314610166578063dc2f874414610249578063e5e5dff114610353575b600080fd5b34801561005b57600080fd5b5061011f6004803603604081101561007257600080fd5b81019080803590602001909291908035906020019064010000000081111561009957600080fd5b8201836020820111156100ab57600080fd5b803590602001918460018302840111640100000000831117156100cd57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061038e565b005b34801561012d57600080fd5b506101646004803603604081101561014457600080fd5b810190808035906020019092919080359060200190929190505050610730565b005b6102336004803603604081101561017c57600080fd5b810190808035906020019064010000000081111561019957600080fd5b8201836020820111156101ab57600080fd5b803590602001918460018302840111640100000000831117156101cd57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290803567ffffffffffffffff169060200190929190505050610b2f565b6040518082815260200191505060405180910390f35b34801561025557600080fd5b506102826004803603602081101561026c57600080fd5b8101908080359060200190929190505050610d72565b604051808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001858152602001806020018460028111156102ce57fe5b60ff168152602001838152602001828103825285818151815260200191508051906020019080838360005b838110156103145780820151818401526020810190506102f9565b50505050905090810190601f1680156103415780820380516001836020036101000a031916815260200191505b50965050505050505060405180910390f35b34801561035f57600080fd5b5061038c6004803603602081101561037657600080fd5b8101908080359060200190929190505050610e7a565b005b8160008054905081106103a057600080fd5b826103b26103ad336110c3565b611118565b6040518082815260200191505060405180910390a0610416610411600083815481106103da57fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166110c3565b611118565b6040518082815260200191505060405180910390a06000818154811061043857fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156104a257600080fd5b8360008160001b6040518082815260200191505060405180910390a0600082815481106104cb57fe5b906000526020600020906005020160030160009054906101000a900460ff1660028111156104f557fe5b81600281111561050157fe5b1461050b57600080fd5b856000818154811061051957fe5b906000526020600020906005020160010154421061053657600080fd5b6001600088815260200190815260200160002060405180606001604052806000151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001888152509080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550604082015181600101908051906020019061062b9291906111a1565b505050507fe467edb885a289a5b3108ca26d435f3ba24f14d8eb6c0732297d79b195c63b0c873360018060008c8152602001908152602001600020805490500389604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b838110156106ea5780820151818401526020810190506106cf565b50505050905090810190601f1680156107175780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a150505050505050565b81600080549050811061074257600080fd5b82826001600083815260200190815260200160002080549050811061076657600080fd5b846000818154811061077457fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146107dd57600080fd5b8560008160001b6040518082815260200191505060405180910390a06000828154811061080657fe5b906000526020600020906005020160030160009054906101000a900460ff16600281111561083057fe5b81600281111561083c57fe5b1461084657600080fd5b87876000151560016000848152602001908152602001600020828154811061086a57fe5b906000526020600020906002020160000160009054906101000a900460ff1615151461089557600080fd5b60018060008c81526020019081526020016000208a815481106108b457fe5b906000526020600020906002020160000160006101000a81548160ff021916908315150217905550600160008b815481106108eb57fe5b906000526020600020906005020160030160006101000a81548160ff0219169083600281111561091757fe5b0217905550600160008b8152602001908152602001600020898154811061093a57fe5b906000526020600020906002020160000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc60008c8154811061099257fe5b9060005260206000209060050201600401549081150290604051600060405180830381858888f193505050501580156109cf573d6000803e3d6000fd5b50887fdf3a7564d87eb6d6112e0cf417a2c2c3f54782224c6f31e863f9069a7db7250a8b60008d81548110610a0057fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160008f81526020019081526020016000208d81548110610a5057fe5b906000526020600020906002020160000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1660008f81548110610a8f57fe5b906000526020600020906005020160040154604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200194505050505060405180910390a250505050505050505050565b6000803411610b3d57600080fd5b8167ffffffffffffffff16428111610b5457600080fd5b60006040518060a001604052803373ffffffffffffffffffffffffffffffffffffffff1681526020018567ffffffffffffffff16815260200186815260200160006002811115610ba057fe5b8152602001348152509080600181540180825580915050906001820390600052602060002090600502016000909192909190915060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550602082015181600101556040820151816002019080519060200190610c419291906111a1565b5060608201518160030160006101000a81548160ff02191690836002811115610c6657fe5b0217905550608082015181600401555050507fba1576d8891bfe57a45ac4b986d4a4aa912c62f44771d4eec8ab2ce06e3be5b7600160008054905003333487604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b83811015610d23578082015181840152602081019050610d08565b50505050905090810190601f168015610d505780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a160016000805490500391505092915050565b60008181548110610d7f57fe5b90600052602060002090600502016000915090508060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690806001015490806002018054600181600116156101000203166002900480601f016020809104026020016040519081016040528092919081815260200182805460018160011615610100020316600290048015610e575780601f10610e2c57610100808354040283529160200191610e57565b820191906000526020600020905b815481529060010190602001808311610e3a57829003601f168201915b5050505050908060030160009054906101000a900460ff16908060040154905085565b806000805490508110610e8c57600080fd5b8160008181548110610e9a57fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610f0357600080fd5b8260008160001b6040518082815260200191505060405180910390a060008281548110610f2c57fe5b906000526020600020906005020160030160009054906101000a900460ff166002811115610f5657fe5b816002811115610f6257fe5b14610f6c57600080fd5b600260008681548110610f7b57fe5b906000526020600020906005020160030160006101000a81548160ff02191690836002811115610fa757fe5b021790555060008581548110610fb957fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc6000878154811061101157fe5b9060005260206000209060050201600401549081150290604051600060405180830381858888f1935050505015801561104e573d6000803e3d6000fd5b503373ffffffffffffffffffffffffffffffffffffffff16857fb9670bf4f2273686f771c9ab65309436df5ed75afa63eefec8b67640d8bcf72c6000888154811061109557fe5b9060005260206000209060050201600401546040518082815260200191505060405180910390a35050505050565b606081604051602001808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019150506040516020818303038152906040529050919050565b600061112582600061112c565b9050919050565b60008060008090505b6020811015611196576008810260ff60f81b868387018151811061115557fe5b602001015160f81c60f81b167effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916901c821791508080600101915050611135565b508091505092915050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106111e257805160ff1916838001178555611210565b82800160010185558215611210579182015b8281111561120f5782518255916020019190600101906111f4565b5b50905061121d9190611221565b5090565b61124391905b8082111561123f576000816000905550600101611227565b5090565b9056fea265627a7a723158209a822a29f41cdd78f421d14c8f7e11cc7d37f23009a3d3511b7e9b617ed4cac864736f6c63430005100032",
+  "deployedBytecode": "0x60806040526004361061004a5760003560e01c80639d8c57341461004f578063a3603d2b14610121578063a372625314610166578063dc2f874414610249578063e5e5dff114610353575b600080fd5b34801561005b57600080fd5b5061011f6004803603604081101561007257600080fd5b81019080803590602001909291908035906020019064010000000081111561009957600080fd5b8201836020820111156100ab57600080fd5b803590602001918460018302840111640100000000831117156100cd57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061038e565b005b34801561012d57600080fd5b506101646004803603604081101561014457600080fd5b810190808035906020019092919080359060200190929190505050610730565b005b6102336004803603604081101561017c57600080fd5b810190808035906020019064010000000081111561019957600080fd5b8201836020820111156101ab57600080fd5b803590602001918460018302840111640100000000831117156101cd57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f820116905080830192505050505050509192919290803567ffffffffffffffff169060200190929190505050610b2f565b6040518082815260200191505060405180910390f35b34801561025557600080fd5b506102826004803603602081101561026c57600080fd5b8101908080359060200190929190505050610d72565b604051808673ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001858152602001806020018460028111156102ce57fe5b60ff168152602001838152602001828103825285818151815260200191508051906020019080838360005b838110156103145780820151818401526020810190506102f9565b50505050905090810190601f1680156103415780820380516001836020036101000a031916815260200191505b50965050505050505060405180910390f35b34801561035f57600080fd5b5061038c6004803603602081101561037657600080fd5b8101908080359060200190929190505050610e7a565b005b8160008054905081106103a057600080fd5b826103b26103ad336110c3565b611118565b6040518082815260200191505060405180910390a0610416610411600083815481106103da57fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166110c3565b611118565b6040518082815260200191505060405180910390a06000818154811061043857fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614156104a257600080fd5b8360008160001b6040518082815260200191505060405180910390a0600082815481106104cb57fe5b906000526020600020906005020160030160009054906101000a900460ff1660028111156104f557fe5b81600281111561050157fe5b1461050b57600080fd5b856000818154811061051957fe5b906000526020600020906005020160010154421061053657600080fd5b6001600088815260200190815260200160002060405180606001604052806000151581526020013373ffffffffffffffffffffffffffffffffffffffff168152602001888152509080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000160006101000a81548160ff02191690831515021790555060208201518160000160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550604082015181600101908051906020019061062b9291906111a1565b505050507fe467edb885a289a5b3108ca26d435f3ba24f14d8eb6c0732297d79b195c63b0c873360018060008c8152602001908152602001600020805490500389604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b838110156106ea5780820151818401526020810190506106cf565b50505050905090810190601f1680156107175780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a150505050505050565b81600080549050811061074257600080fd5b82826001600083815260200190815260200160002080549050811061076657600080fd5b846000818154811061077457fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146107dd57600080fd5b8560008160001b6040518082815260200191505060405180910390a06000828154811061080657fe5b906000526020600020906005020160030160009054906101000a900460ff16600281111561083057fe5b81600281111561083c57fe5b1461084657600080fd5b87876000151560016000848152602001908152602001600020828154811061086a57fe5b906000526020600020906002020160000160009054906101000a900460ff1615151461089557600080fd5b60018060008c81526020019081526020016000208a815481106108b457fe5b906000526020600020906002020160000160006101000a81548160ff021916908315150217905550600160008b815481106108eb57fe5b906000526020600020906005020160030160006101000a81548160ff0219169083600281111561091757fe5b0217905550600160008b8152602001908152602001600020898154811061093a57fe5b906000526020600020906002020160000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc60008c8154811061099257fe5b9060005260206000209060050201600401549081150290604051600060405180830381858888f193505050501580156109cf573d6000803e3d6000fd5b50887fdf3a7564d87eb6d6112e0cf417a2c2c3f54782224c6f31e863f9069a7db7250a8b60008d81548110610a0057fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160008f81526020019081526020016000208d81548110610a5057fe5b906000526020600020906002020160000160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1660008f81548110610a8f57fe5b906000526020600020906005020160040154604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200194505050505060405180910390a250505050505050505050565b6000803411610b3d57600080fd5b8167ffffffffffffffff16428111610b5457600080fd5b60006040518060a001604052803373ffffffffffffffffffffffffffffffffffffffff1681526020018567ffffffffffffffff16815260200186815260200160006002811115610ba057fe5b8152602001348152509080600181540180825580915050906001820390600052602060002090600502016000909192909190915060008201518160000160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550602082015181600101556040820151816002019080519060200190610c419291906111a1565b5060608201518160030160006101000a81548160ff02191690836002811115610c6657fe5b0217905550608082015181600401555050507fba1576d8891bfe57a45ac4b986d4a4aa912c62f44771d4eec8ab2ce06e3be5b7600160008054905003333487604051808581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200183815260200180602001828103825283818151815260200191508051906020019080838360005b83811015610d23578082015181840152602081019050610d08565b50505050905090810190601f168015610d505780820380516001836020036101000a031916815260200191505b509550505050505060405180910390a160016000805490500391505092915050565b60008181548110610d7f57fe5b90600052602060002090600502016000915090508060000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690806001015490806002018054600181600116156101000203166002900480601f016020809104026020016040519081016040528092919081815260200182805460018160011615610100020316600290048015610e575780601f10610e2c57610100808354040283529160200191610e57565b820191906000526020600020905b815481529060010190602001808311610e3a57829003601f168201915b5050505050908060030160009054906101000a900460ff16908060040154905085565b806000805490508110610e8c57600080fd5b8160008181548110610e9a57fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610f0357600080fd5b8260008160001b6040518082815260200191505060405180910390a060008281548110610f2c57fe5b906000526020600020906005020160030160009054906101000a900460ff166002811115610f5657fe5b816002811115610f6257fe5b14610f6c57600080fd5b600260008681548110610f7b57fe5b906000526020600020906005020160030160006101000a81548160ff02191690836002811115610fa757fe5b021790555060008581548110610fb957fe5b906000526020600020906005020160000160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc6000878154811061101157fe5b9060005260206000209060050201600401549081150290604051600060405180830381858888f1935050505015801561104e573d6000803e3d6000fd5b503373ffffffffffffffffffffffffffffffffffffffff16857fb9670bf4f2273686f771c9ab65309436df5ed75afa63eefec8b67640d8bcf72c6000888154811061109557fe5b9060005260206000209060050201600401546040518082815260200191505060405180910390a35050505050565b606081604051602001808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020019150506040516020818303038152906040529050919050565b600061112582600061112c565b9050919050565b60008060008090505b6020811015611196576008810260ff60f81b868387018151811061115557fe5b602001015160f81c60f81b167effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff1916901c821791508080600101915050611135565b508091505092915050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106111e257805160ff1916838001178555611210565b82800160010185558215611210579182015b8281111561120f5782518255916020019190600101906111f4565b5b50905061121d9190611221565b5090565b61124391905b8082111561123f576000816000905550600101611227565b5090565b9056fea265627a7a723158209a822a29f41cdd78f421d14c8f7e11cc7d37f23009a3d3511b7e9b617ed4cac864736f6c63430005100032",
+  "sourceMap": "192:6037:0:-;;;774:23;8:9:-1;5:2;;;30:1;27;20:12;5:2;774:23:0;192:6037;;;;;;",
+  "deployedSourceMap": "192:6037:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1617:398;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1617:398:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1617:398:0;;;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1617:398:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1617:398:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1617:398:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1617:398:0;;;;;;;;;;;;;;;:::i;:::-;;2223:680;;8:9:-1;5:2;;;30:1;27;20:12;5:2;2223:680:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;2223:680:0;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1023:387;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1023:387:0;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1023:387:0;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1023:387:0;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1023:387:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1023:387:0;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;341:24;;8:9:-1;5:2;;;30:1;27;20:12;5:2;341:24:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;341:24:0;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;341:24:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3067:388;;8:9:-1;5:2;;;30:1;27;20:12;5:2;3067:388:0;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;3067:388:0;;;;;;;;;;;;;;;;;:::i;:::-;;1617:398;1728:9;4761:8;:15;;;;4749:9;:27;4741:36;;;;;;1749:9;4856:35;4871:19;4879:10;4871:7;:19::i;:::-;4856:14;:35::i;:::-;4851:41;;;;;;;;;;;;;;;;;;4908:51;4923:35;4931:8;4940:9;4931:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;4923:7;:35::i;:::-;4908:14;:51::i;:::-;4903:57;;;;;;;;;;;;;;;;;;4993:8;5002:9;4993:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;4979:40;;:10;:40;;;;4971:49;;;;;;1770:9;1781:20;5137:9;5129:18;;5124:24;;;;;;;;;;;;;;;;;;5186:8;5195:9;5186:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5167:45;;;;;;;;:15;:45;;;;;;;;;5159:54;;;;;;1820:9;5308:8;5317:9;5308:19;;;;;;;;;;;;;;;;;;:28;;;5302:3;:34;5294:43;;;;;;1847:11;:22;1859:9;1847:22;;;;;;;;;;;1875:36;;;;;;;;1886:5;1875:36;;;;;;1893:10;1875:36;;;;;;1905:5;1875:36;;;1847:65;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1847:65:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;1928:79;1943:9;1954:10;1998:1;1966:11;:22;1978:9;1966:22;;;;;;;;;;;:29;;;;:33;2001:5;1928:79;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1928:79:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5224:1;5031;;4788;1617:398;;;:::o;2223:680::-;2337:9;4761:8;:15;;;;4749:9;:27;4741:36;;;;;;2365:9;2376:13;5462:11;:22;5474:9;5462:22;;;;;;;;;;;:29;;;;5446:13;:45;5438:54;;;;;;2402:9;5589:8;5598:9;5589:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5575:40;;:10;:40;;;5567:49;;;;;;2423:9;2434:20;5137:9;5129:18;;5124:24;;;;;;;;;;;;;;;;;;5186:8;5195:9;5186:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5167:45;;;;;;;;:15;:45;;;;;;;;;5159:54;;;;;;2481:9;2492:13;5783:5;5733:55;;:11;:22;5745:9;5733:22;;;;;;;;;;;5756:13;5733:37;;;;;;;;;;;;;;;;;;:46;;;;;;;;;;;;:55;;;5725:64;;;;;;2572:4;2523:11;:22;2535:9;2523:22;;;;;;;;;;;2546:13;2523:37;;;;;;;;;;;;;;;;;;:46;;;:53;;;;;;;;;;;;;;;;;;2616:21;2587:8;2596:9;2587:19;;;;;;;;;;;;;;;;;;:26;;;:50;;;;;;;;;;;;;;;;;;;;;;;;2648:11;:22;2660:9;2648:22;;;;;;;;;;;2671:13;2648:37;;;;;;;;;;;;;;;;;;:46;;;;;;;;;;;;:55;;:83;2704:8;2713:9;2704:19;;;;;;;;;;;;;;;;;;:26;;;2648:83;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;2648:83:0;2853:13;2747:148;2766:9;2777:8;2786:9;2777:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;2805:11;:22;2817:9;2805:22;;;;;;;;;;;2828:13;2805:37;;;;;;;;;;;;;;;;;;:46;;;;;;;;;;;;2868:8;2877:9;2868:19;;;;;;;;;;;;;;;;;;:26;;;2747:148;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5224:1;;5627;;5503;4788;;2223:680;;;:::o;1023:387::-;1178:4;4662:1;4650:9;:13;4642:22;;;;;;1158:9;4500:103;;4579:3;4564:12;:18;4556:27;;;;;;1200:8;1214:69;;;;;;;;1221:10;1214:69;;;;;;1233:9;1214:69;;;;;;1244:5;1214:69;;;;1251:20;1214:69;;;;;;;;;;;;1273:9;1214:69;;;1200:84;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1200:84:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1300:63;1331:1;1313:8;:15;;;;:19;1334:10;1346:9;1357:5;1300:63;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1300:63:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1400:1;1382:8;:15;;;;:19;1374:28;;4675:1;1023:387;;;;:::o;341:24::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;3067:388::-;3148:9;4761:8;:15;;;;4749:9;:27;4741:36;;;;;;3170:9;5589:8;5598:9;5589:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5575:40;;:10;:40;;;5567:49;;;;;;3191:9;3202:20;5137:9;5129:18;;5124:24;;;;;;;;;;;;;;;;;;5186:8;5195:9;5186:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;5167:45;;;;;;;;:15;:45;;;;;;;;;5159:54;;;;;;3269:22;3240:8;3249:9;3240:19;;;;;;;;;;;;;;;;;;:26;;;:51;;;;;;;;;;;;;;;;;;;;;;;;3302:8;3311:9;3302:19;;;;;;;;;;;;;;;;;;:26;;;;;;;;;;;;:35;;:63;3338:8;3347:9;3338:19;;;;;;;;;;;;;;;;;;:26;;;3302:63;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;3302:63:0;3408:10;3381:66;;3397:9;3381:66;3420:8;3429:9;3420:19;;;;;;;;;;;;;;;;;;:26;;;3381:66;;;;;;;;;;;;;;;;;;5627:1;;4788;3067:388;;:::o;3625:103::-;3675:12;3718:1;3707:13;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;3707:13:0;;;3700:20;;3625:103;;;:::o;4339:117::-;4401:7;4428:20;4443:1;4446;4428:14;:20::i;:::-;4421:27;;4339:117;;;:::o;3954:251::-;4029:7;4049:11;4078:6;4087:1;4078:10;;4073:104;4094:2;4090:1;:6;4073:104;;;4163:1;4159;:5;4149:4;4133:20;;:1;4144;4135:6;:10;4133:13;;;;;;;;;;;;;;;;:20;4125:29;;;:40;;4118:47;;;;4098:3;;;;;;;4073:104;;;;4194:3;4187:10;;;3954:251;;;;:::o;192:6037::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.16;\r\n\r\n/**\r\n * @title Bounties\r\n * @author Peter (based on tute)\r\n * @dev Smart contract that allows a user to issue a bounty in ETH for the fulfilment of a task.\r\n */\r\n\r\ncontract Bounties {\r\n\r\n    /*\r\n     * Enums\r\n     */\r\n    enum BountyStatus { CREATED, ACCEPTED, CANCELLED }\r\n\r\n    /*\r\n     * Storage\r\n     */\r\n    Bounty[] public bounties;\r\n\r\n    mapping(uint=>Fulfilment[]) fulfilments;\r\n\r\n    /*\r\n     * Structs\r\n     */\r\n    struct Bounty {\r\n        address payable issuer;\r\n        uint deadline;\r\n        string data;\r\n        BountyStatus status;\r\n        uint amount;\r\n    }\r\n\r\n    struct Fulfilment {\r\n        bool accepted;\r\n        address payable fulfiler;\r\n        string data;\r\n    }\r\n\r\n    /**\r\n     * @dev Constructor\r\n     */\r\n    constructor() public {}\r\n\r\n    /**\r\n     * @dev issueBounty(): instantiates a new bounty\r\n     * @param _data the requirement of the bounty\r\n     * @param _deadline the Unix timestamp after which fulfilments will no longer be accepted\r\n     */\r\n    function issueBounty(\r\n        string memory _data,\r\n        uint64 _deadline\r\n    )\r\n\r\n    public payable hasValue() validateDeadline(_deadline) returns (uint)\r\n    {\r\n        bounties.push(Bounty(msg.sender, _deadline, _data, BountyStatus.CREATED, msg.value));\r\n        emit BountyIssued(bounties.length - 1, msg.sender, msg.value, _data);\r\n        return (bounties.length - 1);\r\n    }\r\n\r\n    /**\r\n     * @dev fulfilBounty(): submit a fulfilment of a bounty\r\n     * @param _bountyId the bounty being fulfiled\r\n     * @param _data the IPFS hash containing evidence of fulfilment\r\n     */\r\n    function fulfilBounty(\r\n        uint _bountyId,\r\n        string memory _data\r\n    )\r\n\r\n    public bountyExists(_bountyId) notIssuer(_bountyId) hasStatus(_bountyId, BountyStatus.CREATED) isBeforeDeadline(_bountyId)\r\n    {\r\n        fulfilments[_bountyId].push(Fulfilment(false, msg.sender, _data));\r\n        emit BountyFulfiled(_bountyId, msg.sender, fulfilments[_bountyId].length - 1, _data);\r\n    }\r\n\r\n    /**\r\n     * @dev acceptFulfilment(): accepts a submitted fulfilment and pays the BountyFulfiled\r\n     * @param _bountyId the bounty's id\r\n     * @param _fulfilmentId the fulfilment's id\r\n     */\r\n    function acceptFulfilment(\r\n        uint _bountyId,\r\n        uint _fulfilmentId\r\n    )\r\n\r\n    public bountyExists(_bountyId) fulfilmentExists(_bountyId, _fulfilmentId) onlyIssuer(_bountyId) hasStatus(_bountyId, BountyStatus.CREATED) fulfilmentNotYetAccepted(_bountyId, _fulfilmentId)\r\n    {\r\n        fulfilments[_bountyId][_fulfilmentId].accepted = true;\r\n        bounties[_bountyId].status = BountyStatus.ACCEPTED;\r\n        fulfilments[_bountyId][_fulfilmentId].fulfiler.transfer(bounties[_bountyId].amount);\r\n        emit FulfilmentAccepted(_bountyId, bounties[_bountyId].issuer, fulfilments[_bountyId][_fulfilmentId].fulfiler, _fulfilmentId, bounties[_bountyId].amount);\r\n    }\r\n\r\n    /**\r\n     * @dev cancelBounty(): cancels a bounty and returns the funds to the issuer\r\n     * @param _bountyId the id of the bounty to cancel\r\n     */\r\n    function cancelBounty(\r\n        uint _bountyId\r\n    )\r\n\r\n    public bountyExists(_bountyId) onlyIssuer(_bountyId) hasStatus(_bountyId, BountyStatus.CREATED)\r\n    {\r\n        bounties[_bountyId].status = BountyStatus.CANCELLED;\r\n        bounties[_bountyId].issuer.transfer(bounties[_bountyId].amount);\r\n        emit BountyCancelled(_bountyId, msg.sender, bounties[_bountyId].amount);\r\n    }\r\n\r\n    /**\r\n     * @dev toBytes(): Converts an address to bytes for logging.\r\n     * @param a the address to Converts\r\n     * @return the address in bytes\r\n     */\r\n    function toBytes(address a) private pure returns (bytes memory) {\r\n        return abi.encode(a);\r\n    }\r\n\r\n    /**\r\n     * @dev bytesToBytes32(): Converts bytes to bytes32 for logging.\r\n     * @param b the bytes to convert\r\n     * @param offset Offset to start the conversion at. 0 if you require the whole number.\r\n     */\r\n    function bytesToBytes32(bytes memory b, uint offset) private pure returns (bytes32) {\r\n        bytes32 out;\r\n\r\n        for (uint i = 0; i < 32; i++) {\r\n            out |= bytes32(b[offset + i] & 0xFF) >> (i * 8);\r\n        }\r\n        return out;\r\n    }\r\n\r\n    /**\r\n     * @dev bytesToBytes32(): Converts bytes to bytes32 for logging.\r\n     * @param b the bytes to convert\r\n     */\r\n    function bytesToBytes32(bytes memory b) private pure returns (bytes32) {\r\n        return bytesToBytes32(b, 0);\r\n    }\r\n\r\n    /**\r\n     * Modifiers\r\n     */\r\n    modifier validateDeadline(uint _newDeadline) {\r\n        require(_newDeadline > now);\r\n        _;\r\n    }\r\n\r\n    modifier hasValue() {\r\n        require(msg.value > 0);\r\n        _;\r\n    }\r\n\r\n    modifier bountyExists(uint _bountyId) {\r\n        require(_bountyId < bounties.length);\r\n        _;\r\n    }\r\n\r\n    modifier notIssuer(uint _bountyId) {\r\n        log0(bytesToBytes32(toBytes(msg.sender)));\r\n        log0(bytesToBytes32(toBytes(bounties[_bountyId].issuer)));\r\n        require(msg.sender != bounties[_bountyId].issuer);\r\n        _;\r\n    }\r\n\r\n    modifier hasStatus(uint _bountyId, BountyStatus _requiredStatus) {\r\n        log0(bytes32(_bountyId));\r\n        require(_requiredStatus == bounties[_bountyId].status);\r\n        _;\r\n    }\r\n\r\n    modifier isBeforeDeadline(uint _bountyId) {\r\n        require(now < bounties[_bountyId].deadline);\r\n        _;\r\n    }\r\n\r\n    modifier fulfilmentExists(uint _bountyId, uint _fulfilmentId) {\r\n        require(_fulfilmentId < fulfilments[_bountyId].length);\r\n        _;\r\n    }\r\n\r\n    modifier onlyIssuer(uint _bountyId) {\r\n        require(msg.sender == bounties[_bountyId].issuer);\r\n        _;\r\n    }\r\n\r\n    modifier fulfilmentNotYetAccepted(uint _bountyId, uint _fulfilmentId) {\r\n        require(fulfilments[_bountyId][_fulfilmentId].accepted == false);\r\n        _;\r\n    }\r\n\r\n    /**\r\n     * Events\r\n     */\r\n    event BountyIssued(uint bountyId, address issuer, uint amount, string data);\r\n    event BountyFulfiled(uint bountyId, address fulfiler, uint fulfilmentId, string data);\r\n    event FulfilmentAccepted(uint bountyId, address issuer, address fulfiler, uint indexed fulfilmentId, uint amount);\r\n    event BountyCancelled(uint indexed bountyId, address indexed sender, uint amount);\r\n}\r\n",
   "sourcePath": "D:\\projects\\JB\\dapp-series-bounties-truffle-box\\contracts\\Bounties.sol",
   "ast": {
     "absolutePath": "/D/projects/JB/dapp-series-bounties-truffle-box/contracts/Bounties.sol",
@@ -6602,10 +6602,10 @@
                   "constant": false,
                   "id": 486,
                   "indexed": false,
-                  "name": "bounty_id",
+                  "name": "bountyId",
                   "nodeType": "VariableDeclaration",
                   "scope": 494,
-                  "src": "5869:14:0",
+                  "src": "5869:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6632,7 +6632,7 @@
                   "name": "issuer",
                   "nodeType": "VariableDeclaration",
                   "scope": 494,
-                  "src": "5885:14:0",
+                  "src": "5884:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6643,7 +6643,7 @@
                     "id": 487,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5885:7:0",
+                    "src": "5884:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -6660,7 +6660,7 @@
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "scope": 494,
-                  "src": "5901:11:0",
+                  "src": "5900:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6671,7 +6671,7 @@
                     "id": 489,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5901:4:0",
+                    "src": "5900:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -6687,7 +6687,7 @@
                   "name": "data",
                   "nodeType": "VariableDeclaration",
                   "scope": 494,
-                  "src": "5914:11:0",
+                  "src": "5913:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6698,7 +6698,7 @@
                     "id": 491,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5914:6:0",
+                    "src": "5913:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -6708,9 +6708,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5868:58:0"
+              "src": "5868:57:0"
             },
-            "src": "5850:77:0"
+            "src": "5850:76:0"
           },
           {
             "anonymous": false,
@@ -6729,7 +6729,7 @@
                   "name": "bountyId",
                   "nodeType": "VariableDeclaration",
                   "scope": 504,
-                  "src": "5954:13:0",
+                  "src": "5953:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6740,7 +6740,7 @@
                     "id": 495,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5954:4:0",
+                    "src": "5953:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -6756,7 +6756,7 @@
                   "name": "fulfiler",
                   "nodeType": "VariableDeclaration",
                   "scope": 504,
-                  "src": "5969:16:0",
+                  "src": "5968:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6767,7 +6767,7 @@
                     "id": 497,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5969:7:0",
+                    "src": "5968:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -6784,7 +6784,7 @@
                   "name": "fulfilmentId",
                   "nodeType": "VariableDeclaration",
                   "scope": 504,
-                  "src": "5987:17:0",
+                  "src": "5986:17:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6795,7 +6795,7 @@
                     "id": 499,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5987:4:0",
+                    "src": "5986:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -6811,7 +6811,7 @@
                   "name": "data",
                   "nodeType": "VariableDeclaration",
                   "scope": 504,
-                  "src": "6006:11:0",
+                  "src": "6005:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6822,7 +6822,7 @@
                     "id": 501,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6006:6:0",
+                    "src": "6005:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -6832,9 +6832,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5953:65:0"
+              "src": "5952:65:0"
             },
-            "src": "5933:86:0"
+            "src": "5932:86:0"
           },
           {
             "anonymous": false,
@@ -6853,7 +6853,7 @@
                   "name": "bountyId",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6050:13:0",
+                  "src": "6049:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6864,7 +6864,7 @@
                     "id": 505,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6050:4:0",
+                    "src": "6049:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -6880,7 +6880,7 @@
                   "name": "issuer",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6065:14:0",
+                  "src": "6064:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6891,7 +6891,7 @@
                     "id": 507,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6065:7:0",
+                    "src": "6064:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -6908,7 +6908,7 @@
                   "name": "fulfiler",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6081:16:0",
+                  "src": "6080:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6919,7 +6919,7 @@
                     "id": 509,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6081:7:0",
+                    "src": "6080:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -6936,7 +6936,7 @@
                   "name": "fulfilmentId",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6099:25:0",
+                  "src": "6098:25:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6947,7 +6947,7 @@
                     "id": 511,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6099:4:0",
+                    "src": "6098:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -6963,7 +6963,7 @@
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6126:11:0",
+                  "src": "6125:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -6974,7 +6974,7 @@
                     "id": 513,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6126:4:0",
+                    "src": "6125:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -6984,9 +6984,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "6049:89:0"
+              "src": "6048:89:0"
             },
-            "src": "6025:114:0"
+            "src": "6024:114:0"
           },
           {
             "anonymous": false,
@@ -7005,7 +7005,7 @@
                   "name": "bountyId",
                   "nodeType": "VariableDeclaration",
                   "scope": 524,
-                  "src": "6167:21:0",
+                  "src": "6166:21:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -7016,7 +7016,7 @@
                     "id": 517,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6167:4:0",
+                    "src": "6166:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -7032,7 +7032,7 @@
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
                   "scope": 524,
-                  "src": "6190:22:0",
+                  "src": "6189:22:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -7043,7 +7043,7 @@
                     "id": 519,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6190:7:0",
+                    "src": "6189:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -7060,7 +7060,7 @@
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "scope": 524,
-                  "src": "6214:11:0",
+                  "src": "6213:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -7071,7 +7071,7 @@
                     "id": 521,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6214:4:0",
+                    "src": "6213:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -7081,16 +7081,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "6166:60:0"
+              "src": "6165:60:0"
             },
-            "src": "6145:82:0"
+            "src": "6144:82:0"
           }
         ],
         "scope": 526,
-        "src": "192:6038:0"
+        "src": "192:6037:0"
       }
     ],
-    "src": "0:6232:0"
+    "src": "0:6231:0"
   },
   "legacyAST": {
     "absolutePath": "/D/projects/JB/dapp-series-bounties-truffle-box/contracts/Bounties.sol",
@@ -13433,10 +13433,10 @@
                   "constant": false,
                   "id": 486,
                   "indexed": false,
-                  "name": "bounty_id",
+                  "name": "bountyId",
                   "nodeType": "VariableDeclaration",
                   "scope": 494,
-                  "src": "5869:14:0",
+                  "src": "5869:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13463,7 +13463,7 @@
                   "name": "issuer",
                   "nodeType": "VariableDeclaration",
                   "scope": 494,
-                  "src": "5885:14:0",
+                  "src": "5884:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13474,7 +13474,7 @@
                     "id": 487,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5885:7:0",
+                    "src": "5884:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -13491,7 +13491,7 @@
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "scope": 494,
-                  "src": "5901:11:0",
+                  "src": "5900:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13502,7 +13502,7 @@
                     "id": 489,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5901:4:0",
+                    "src": "5900:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -13518,7 +13518,7 @@
                   "name": "data",
                   "nodeType": "VariableDeclaration",
                   "scope": 494,
-                  "src": "5914:11:0",
+                  "src": "5913:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13529,7 +13529,7 @@
                     "id": 491,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5914:6:0",
+                    "src": "5913:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -13539,9 +13539,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5868:58:0"
+              "src": "5868:57:0"
             },
-            "src": "5850:77:0"
+            "src": "5850:76:0"
           },
           {
             "anonymous": false,
@@ -13560,7 +13560,7 @@
                   "name": "bountyId",
                   "nodeType": "VariableDeclaration",
                   "scope": 504,
-                  "src": "5954:13:0",
+                  "src": "5953:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13571,7 +13571,7 @@
                     "id": 495,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5954:4:0",
+                    "src": "5953:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -13587,7 +13587,7 @@
                   "name": "fulfiler",
                   "nodeType": "VariableDeclaration",
                   "scope": 504,
-                  "src": "5969:16:0",
+                  "src": "5968:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13598,7 +13598,7 @@
                     "id": 497,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5969:7:0",
+                    "src": "5968:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -13615,7 +13615,7 @@
                   "name": "fulfilmentId",
                   "nodeType": "VariableDeclaration",
                   "scope": 504,
-                  "src": "5987:17:0",
+                  "src": "5986:17:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13626,7 +13626,7 @@
                     "id": 499,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "5987:4:0",
+                    "src": "5986:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -13642,7 +13642,7 @@
                   "name": "data",
                   "nodeType": "VariableDeclaration",
                   "scope": 504,
-                  "src": "6006:11:0",
+                  "src": "6005:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13653,7 +13653,7 @@
                     "id": 501,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6006:6:0",
+                    "src": "6005:6:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -13663,9 +13663,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "5953:65:0"
+              "src": "5952:65:0"
             },
-            "src": "5933:86:0"
+            "src": "5932:86:0"
           },
           {
             "anonymous": false,
@@ -13684,7 +13684,7 @@
                   "name": "bountyId",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6050:13:0",
+                  "src": "6049:13:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13695,7 +13695,7 @@
                     "id": 505,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6050:4:0",
+                    "src": "6049:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -13711,7 +13711,7 @@
                   "name": "issuer",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6065:14:0",
+                  "src": "6064:14:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13722,7 +13722,7 @@
                     "id": 507,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6065:7:0",
+                    "src": "6064:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -13739,7 +13739,7 @@
                   "name": "fulfiler",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6081:16:0",
+                  "src": "6080:16:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13750,7 +13750,7 @@
                     "id": 509,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6081:7:0",
+                    "src": "6080:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -13767,7 +13767,7 @@
                   "name": "fulfilmentId",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6099:25:0",
+                  "src": "6098:25:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13778,7 +13778,7 @@
                     "id": 511,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6099:4:0",
+                    "src": "6098:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -13794,7 +13794,7 @@
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "scope": 516,
-                  "src": "6126:11:0",
+                  "src": "6125:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13805,7 +13805,7 @@
                     "id": 513,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6126:4:0",
+                    "src": "6125:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -13815,9 +13815,9 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "6049:89:0"
+              "src": "6048:89:0"
             },
-            "src": "6025:114:0"
+            "src": "6024:114:0"
           },
           {
             "anonymous": false,
@@ -13836,7 +13836,7 @@
                   "name": "bountyId",
                   "nodeType": "VariableDeclaration",
                   "scope": 524,
-                  "src": "6167:21:0",
+                  "src": "6166:21:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13847,7 +13847,7 @@
                     "id": 517,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6167:4:0",
+                    "src": "6166:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -13863,7 +13863,7 @@
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
                   "scope": 524,
-                  "src": "6190:22:0",
+                  "src": "6189:22:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13874,7 +13874,7 @@
                     "id": 519,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6190:7:0",
+                    "src": "6189:7:0",
                     "stateMutability": "nonpayable",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
@@ -13891,7 +13891,7 @@
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
                   "scope": 524,
-                  "src": "6214:11:0",
+                  "src": "6213:11:0",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -13902,7 +13902,7 @@
                     "id": 521,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "6214:4:0",
+                    "src": "6213:4:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -13912,16 +13912,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "6166:60:0"
+              "src": "6165:60:0"
             },
-            "src": "6145:82:0"
+            "src": "6144:82:0"
           }
         ],
         "scope": 526,
-        "src": "192:6038:0"
+        "src": "192:6037:0"
       }
     ],
-    "src": "0:6232:0"
+    "src": "0:6231:0"
   },
   "compiler": {
     "name": "solc",
@@ -14061,8 +14061,7 @@
     }
   },
   "schemaVersion": "3.0.23",
-  "updatedAt": "2020-02-17T02:40:00.835Z",
-  "networkType": "ethereum",
+  "updatedAt": "2020-02-21T15:22:28.501Z",
   "devdoc": {
     "author": "Peter (based on tute)",
     "details": "Smart contract that allows a user to issue a bounty in ETH for the fulfilment of a task.",
