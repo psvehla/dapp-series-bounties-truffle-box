@@ -23,7 +23,8 @@ const ipfsBaseUrl = "https://ipfs.infura.io/ipfs";
 
 const eventType = {
   ISSUANCE: 'issuance',
-  CANCELLATION: 'cancellation'
+  CANCELLATION: 'cancellation',
+  FULFILMENT: 'fulfilment'
 }
 
 Object.freeze(eventType);
@@ -36,11 +37,13 @@ class App extends Component {
     this.state = {
       bountiesInstance: undefined,
       bountyId: '',
-      bountyData: undefined,
-      bountyDeadline: undefined,
-      bountyAmount: undefined,
+      bountyData: '',
+      bountyDeadline: '',
+      bountyAmount: '',
+      fulfilmentData: '',
       etherscanLink: etherscanBaseUrl,
       bounties: [],
+      fulfilments: [],
       bountyEvents: [],
       account: null,
       web3: null,
@@ -48,8 +51,8 @@ class App extends Component {
 
     this.handleIssueBounty = this.handleIssueBounty.bind(this);
     this.handleCancelBounty = this.handleCancelBounty.bind(this);
+    this.handleFulfilBounty = this.handleFulfilBounty.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.processEventLog = this.processEventLog.bind(this);
   }
 
   componentDidMount = async () => {
@@ -103,24 +106,49 @@ class App extends Component {
         event.returnValues['ipfsData'] = "none";
       }
 
-      let newBountyEventsArray = component.state.bountyEvents.slice();
-      event.returnValues['eventType'] = eventType.ISSUANCE;
-      newBountyEventsArray.push(event.returnValues);
-      component.setState({ bountyEvents: newBountyEventsArray});
-
-      playEventLog(component, event);
+      addEvent(event, eventType.ISSUANCE);
     })
     .on('error', console.error);
 
     this.state.bountiesInstance.events.BountyCancelled({ fromBlock: 0, toBlock: 'latest'})
     .on('data', async function(event) {
+      addEvent(event, eventType.CANCELLATION);
+    })
+    .on('error', console.error);
+
+    this.state.bountiesInstance.events.BountyFulfiled({ fromBlock: 0, toBlock: 'latest'})
+    .on('data', async function(event) {
+
+      // first get the data from IPFS and add it to the event
+      var ipfsJSON = {};
+
+      try {
+        ipfsJSON = await getJSON(event.returnValues.data);
+      }
+      catch(e) {
+      }
+
+      if (ipfsJSON.fulfilmentData !== undefined) {
+        event.returnValues['fulfilmentData'] = ipfsJSON.fulfilmentData;
+        event.returnValues['ipfsData'] = ipfsBaseUrl + "/" + event.returnValues.data;
+      }
+      else {
+        event.returnValues['fulfilmentData'] = event.returnValues['data'];
+        event.returnValues['ipfsData'] = "none";
+      }
+
+      addEvent(event, eventType.FULFILMENT);
+    })
+    .on('error', console.error);
+
+    var addEvent = async function(event, eventType) {
       let newBountyEventsArray = component.state.bountyEvents.slice();
-      event.returnValues['eventType'] = eventType.CANCELLATION;
+      event.returnValues['eventType'] = eventType;
       newBountyEventsArray.push(event.returnValues);
       component.setState({ bountyEvents: newBountyEventsArray});
 
       playEventLog(component, event);
-    })
+    }
 
     var playEventLog = async function(component) {
 
@@ -136,6 +164,14 @@ class App extends Component {
         return !removals.some(e => ( e.bountyId === value.bountyId ));
       }
 
+      var keepFulfilments = function(value) {
+        return value['eventType'] === eventType.FULFILMENT;
+      }
+
+      var removeOrphanedFulfilments = function(value) {
+        return newBountiesArray.some(e => ( e.bountyId === value.bountyId ));
+      }
+
       var newBountiesArray = component.state.bountyEvents.slice();
       newBountiesArray = newBountiesArray.filter(keepIssuances);
 
@@ -145,6 +181,11 @@ class App extends Component {
       newBountiesArray = newBountiesArray.filter(keepCurrentBounties);
 
       component.setState({ bounties: newBountiesArray });
+
+      var newFulfilmentsArray = component.state.bountyEvents.slice();
+      newFulfilmentsArray = newFulfilmentsArray.filter(keepFulfilments);
+      newFulfilmentsArray = newFulfilmentsArray.filter(removeOrphanedFulfilments);
+      component.setState({ fulfilments: newFulfilmentsArray});
     }
   }
 
@@ -161,6 +202,9 @@ class App extends Component {
         break;
       case "bountyId":
         this.setState({"bountyId": event.target.value});
+        break;
+      case "fulfilmentData":
+        this.setState({"fulfilmentData": event.target.value});
         break;
       default:
         break;
@@ -184,6 +228,18 @@ class App extends Component {
       event.preventDefault();
 
       let result = await this.state.bountiesInstance.methods.cancelBounty(this.state.bountyId)
+        .send({ from: this.state.account });
+
+      this.setLastTransactionDetails(result);
+    }
+  }
+
+  async handleFulfilBounty(event) {
+    if (typeof this.state.bountiesInstance !== 'undefined') {
+      event.preventDefault();
+      const ipfsHash = await setJSON({ fulfilmentData: this.state.fulfilmentData })
+
+      let result = await this.state.bountiesInstance.methods.fulfilBounty(this.state.bountyId, ipfsHash)
         .send({ from: this.state.account });
 
       this.setLastTransactionDetails(result);
@@ -251,7 +307,7 @@ class App extends Component {
               <Form onSubmit={this.handleCancelBounty}>
                 <FormGroup controlId="formCancelBounty">
                   <FormControl
-                    componentclass="textarea"
+                    type="text"
                     name="bountyId"
                     value={this.state.bountyId}
                     placeholder="Enter bounty ID"
@@ -265,6 +321,33 @@ class App extends Component {
           </Row>
           <Row>
             <Card>
+              <Card.Header>Fulfil Bounty</Card.Header>
+              <Form onSubmit={this.handleFulfilBounty}>
+                <FormGroup controlId="formFulfilBounty">
+                  <FormControl
+                    type="text"
+                    name="bountyId"
+                    value={this.state.bountyId}
+                    placeholder="Enter bounty ID"
+                    onChange={this.handleChange}
+                  />
+                  <FormText>Enter bounty ID.</FormText>
+
+                  <FormControl
+                    componentclass="textarea"
+                    name="fulfilmentData"
+                    value={this.state.fulfilmentData}
+                    placeholder="Enter fulfilment details"
+                    onChange={this.handleChange}
+                  />
+                  <FormText>Enter fulfilment details.</FormText>
+                  <Button type="submit">fulfil bounty</Button>
+                </FormGroup>
+              </Form>
+            </Card>
+          </Row>
+          <Row>
+            <Card>
               <Card.Header>Available Bounties</Card.Header>
               <BootstrapTable data={this.state.bounties} striped hover>
                 <TableHeaderColumn isKey dataField='bountyId'>ID</TableHeaderColumn>
@@ -272,6 +355,18 @@ class App extends Component {
                 <TableHeaderColumn dataField='amount'>Amount</TableHeaderColumn>
                 <TableHeaderColumn dataField='ipfsData'>IPFS Data</TableHeaderColumn>
                 <TableHeaderColumn dataField='bountyData'>Bounty Data</TableHeaderColumn>
+              </BootstrapTable>
+            </Card>
+          </Row>
+          <Row>
+            <Card>
+              <Card.Header>Fulfilments</Card.Header>
+              <BootstrapTable data={this.state.fulfilments} striped hover>
+                <TableHeaderColumn isKey dataField='bountyId'>Bounty ID</TableHeaderColumn>
+                <TableHeaderColumn dataField='fulfiler'>Fulfiler</TableHeaderColumn>
+                <TableHeaderColumn dataField='fulfilmentId'>Fulfilment ID</TableHeaderColumn>
+                <TableHeaderColumn dataField='ipfsData'>IPFS Data</TableHeaderColumn>
+                <TableHeaderColumn dataField='fulfilmentData'>Fulfilment Data</TableHeaderColumn>
               </BootstrapTable>
             </Card>
           </Row>
