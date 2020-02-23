@@ -24,7 +24,8 @@ const ipfsBaseUrl = "https://ipfs.infura.io/ipfs";
 const eventType = {
   ISSUANCE: 'issuance',
   CANCELLATION: 'cancellation',
-  FULFILMENT: 'fulfilment'
+  FULFILMENT: 'fulfilment',
+  ACCEPTANCE: 'acceptance'
 }
 
 Object.freeze(eventType);
@@ -40,6 +41,7 @@ class App extends Component {
       bountyData: '',
       bountyDeadline: '',
       bountyAmount: '',
+      fulfilmentId: '',
       fulfilmentData: '',
       etherscanLink: etherscanBaseUrl,
       bounties: [],
@@ -52,6 +54,7 @@ class App extends Component {
     this.handleIssueBounty = this.handleIssueBounty.bind(this);
     this.handleCancelBounty = this.handleCancelBounty.bind(this);
     this.handleFulfilBounty = this.handleFulfilBounty.bind(this);
+    this.handleAcceptFulfilment = this.handleAcceptFulfilment.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -141,6 +144,12 @@ class App extends Component {
     })
     .on('error', console.error);
 
+    this.state.bountiesInstance.events.FulfilmentAccepted({ fromBlock: 0, toBlock: 'latest'})
+    .on('data', async function(event) {
+      addEvent(event, eventType.ACCEPTANCE);
+    })
+    .on('error', console.error);
+
     var addEvent = async function(event, eventType) {
       let newBountyEventsArray = component.state.bountyEvents.slice();
       event.returnValues['eventType'] = eventType;
@@ -156,8 +165,8 @@ class App extends Component {
         return value['eventType'] === eventType.ISSUANCE;
       }
 
-      var keepCancellations = function(value) {
-        return value['eventType'] === eventType.CANCELLATION;
+      var keepCancellationsAndAcceptances = function(value) {
+        return (value['eventType'] === eventType.CANCELLATION) || (value['eventType'] === eventType.ACCEPTANCE);
       }
 
       var keepCurrentBounties = function(value) {
@@ -176,7 +185,7 @@ class App extends Component {
       newBountiesArray = newBountiesArray.filter(keepIssuances);
 
       var removals = component.state.bountyEvents.slice();
-      removals = removals.filter(keepCancellations);
+      removals = removals.filter(keepCancellationsAndAcceptances);
 
       newBountiesArray = newBountiesArray.filter(keepCurrentBounties);
 
@@ -205,6 +214,9 @@ class App extends Component {
         break;
       case "fulfilmentData":
         this.setState({"fulfilmentData": event.target.value});
+        break;
+      case "fulfilmentId":
+        this.setState({"fulfilmentId": event.target.value});
         break;
       default:
         break;
@@ -240,6 +252,17 @@ class App extends Component {
       const ipfsHash = await setJSON({ fulfilmentData: this.state.fulfilmentData })
 
       let result = await this.state.bountiesInstance.methods.fulfilBounty(this.state.bountyId, ipfsHash)
+        .send({ from: this.state.account });
+
+      this.setLastTransactionDetails(result);
+    }
+  }
+
+  async handleAcceptFulfilment(event) {
+    if (typeof this.state.bountiesInstance !== 'undefined') {
+      event.preventDefault();
+
+      let result = await this.state.bountiesInstance.methods.acceptFulfilment(this.state.bountyId, this.state.fulfilmentId)
         .send({ from: this.state.account });
 
       this.setLastTransactionDetails(result);
@@ -342,6 +365,33 @@ class App extends Component {
                   />
                   <FormText>Enter fulfilment details.</FormText>
                   <Button type="submit">fulfil bounty</Button>
+                </FormGroup>
+              </Form>
+            </Card>
+          </Row>
+          <Row>
+            <Card>
+              <Card.Header>Accept Fulfilment</Card.Header>
+              <Form onSubmit={this.handleAcceptFulfilment}>
+                <FormGroup controlId="formAcceptFulfilment">
+                  <FormControl
+                    type="text"
+                    name="bountyId"
+                    value={this.state.bountyId}
+                    placeholder="Enter bounty ID"
+                    onChange={this.handleChange}
+                  />
+                  <FormText>Enter bounty ID.</FormText>
+
+                  <FormControl
+                    type="text"
+                    name="fulfilmentId"
+                    value={this.state.fulfilmentId}
+                    placeholder="Enter fulfilment ID"
+                    onChange={this.handleChange}
+                  />
+                  <FormText>Enter fulfilment ID.</FormText>
+                  <Button type="submit">accept fulfilment</Button>
                 </FormGroup>
               </Form>
             </Card>
